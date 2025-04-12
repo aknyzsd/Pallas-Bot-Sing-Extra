@@ -6,8 +6,8 @@
 
 <br>
 
-Todo:
-sing功能接入SVC4.1和DDSP6.1以及RVC，增加本地曲库，支持发送歌曲原文件，自动化回收切片文件
+*So-Vits-SVC 4.1、DDSP-SVC 6.1的支持来自@一只沙貂*
+Todo:支持RVC
 
 <br>
 
