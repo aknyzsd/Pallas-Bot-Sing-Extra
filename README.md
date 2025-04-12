@@ -6,7 +6,10 @@
 
 <br>
 
-*So-Vits-SVC 4.1、DDSP-SVC 6.1的支持来自@一只沙貂*
+<big>
+***So-Vits-SVC 4.1、DDSP-SVC 6.1的支持来自@一只沙貂***
+</big>
+
 Todo:支持RVC
 
 <br>
