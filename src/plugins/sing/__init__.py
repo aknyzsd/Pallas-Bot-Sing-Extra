@@ -37,7 +37,9 @@ if plugin_config.sing_cuda_device:
     set_svc_cuda_devices(plugin_config.sing_cuda_device)
 
 require("src.plugins.nonebot_plugin_gocqhttp_cross_machine_upload_file")
+require("src.plugins.custom_face")
 from src.plugins.nonebot_plugin_gocqhttp_cross_machine_upload_file import upload_file
+from src.plugins.custom_face import fetch_custom_face_list, send_custom_face, update_custom_face_list
 
 #custom_face_list = await asyncify(get_custom_face_cmd)
 
@@ -1314,47 +1316,3 @@ async def handle_refresh_local_music(bot: Bot, event: GroupMessageEvent):
     except Exception as e:
         logger.error(f"刷新本地曲库失败：{e}")
         await refresh_local_music_cmd.finish("刷新本地曲库失败，请稍后重试喵！")
-
-# 定义一个新命令来调用 fetch_custom_face_list
-list_custom_faces_cmd = on_command(
-    "列出自定义表情",
-    permission=SUPERUSER,
-    priority=10,
-    block=True
-)
-
-@list_custom_faces_cmd.handle()
-async def handle_list_custom_faces():
-    """
-    列出所有自定义表情
-    """
-    custom_face_list = await fetch_custom_face_list()
-    if not custom_face_list:
-        await list_custom_faces_cmd.finish("当前没有自定义表情！")
-    else:
-        face_keys = "\n".join(custom_face_list.keys())
-        await list_custom_faces_cmd.finish(f"当前自定义表情列表：\n{face_keys}")
-
-# 定义一个新命令来调用 send_custom_face
-send_custom_face_cmd = on_command(
-    "发送自定义表情",
-    permission=SUPERUSER,
-    priority=10,
-    block=True
-)
-
-@send_custom_face_cmd.handle()
-async def handle_send_custom_face(bot: Bot, event: GroupMessageEvent, args: Message = CommandArg()):
-    """
-    发送自定义表情，命令格式为 "发送自定义表情 face_n"
-    """
-    text = args.extract_plain_text().strip()
-    if not text.startswith("face_"):
-        await send_custom_face_cmd.finish("格式错误，请使用：发送自定义表情 face_n，例如：发送自定义表情 face_1")
-
-    try:
-        await send_custom_face(bot, event, text)
-    except ValueError as e:
-        await send_custom_face_cmd.finish(str(e))
-    except Exception:
-        await send_custom_face_cmd.finish("发送自定义表情失败，请稍后重试！")
