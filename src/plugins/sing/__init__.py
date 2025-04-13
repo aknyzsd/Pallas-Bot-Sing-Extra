@@ -36,12 +36,8 @@ if plugin_config.sing_cuda_device:
     set_separate_cuda_devices(plugin_config.sing_cuda_device)
     set_svc_cuda_devices(plugin_config.sing_cuda_device)
 
-require("src.plugins.nonebot_plugin_gocqhttp_cross_machine_upload_file")
-require("src.plugins.custom_face")
-from src.plugins.nonebot_plugin_gocqhttp_cross_machine_upload_file import upload_file
-from src.plugins.custom_face import fetch_custom_face_list, send_custom_face, update_custom_face_list
-
-#custom_face_list = await asyncify(get_custom_face_cmd)
+require("src.plugins.upload_file_plugin")
+from src.plugins.upload_file_plugin import upload_file
 
 
 SING_CMD = '唱歌'
@@ -256,38 +252,11 @@ async def _(bot: Bot, event: GroupMessageEvent, state: T_State):
             data = f.read()
         msg: Message = MessageSegment.record(file=data)
         await sing_msg.finish(msg)
-    
-    ##先刷一下自定义表情
-    logger_update_face = await update_custom_face_list(bot)
-    logger.info(f"更新自定义表情列表成功，获取到 {logger_update_face} 个自定义表情")
 
 
     try:
         # 下载 -> 切片 -> 人声分离 -> 音色转换（SVC） -> 混音
-        if speaker_name_msg == "猫雷":
-            await sing_msg.send('喵喵露们，聆听圣猫雷的福音罢！')
-        elif speaker_name_msg == "柏林以东":
-            await sing_msg.send('你会是个勇敢的发声者吗……')
-        elif speaker_name_msg == "37":
-            await sing_msg.send('欢迎来到数的世界。')
-        elif speaker_name_msg == "星瞳":
-            await sing_msg.send('小星星们早上中午晚上好呀！')
-        elif speaker_name_msg == "塔菲":
-            await sing_msg.send('塔菲最喜欢雏草姬了喵！')
-        elif speaker_name_msg == "小菲":
-            await sing_msg.send('可恶的大菲，又让我演奏😭')
-        elif speaker_name_msg in ['soyo', '素世', '素食', '爽世']:
-            #await sing_msg.send('为什么要演奏《春日影》？！！！！！')
-            soyo_face_id = 'face_5'
-            await send_custom_face(bot, event, soyo_face_id)
-            if state.get('soyo_force', False) or song_key not in ['春日影']:
-                await sing_msg.send('好吧，我就勉强演奏一下吧！')
-            else:
-                await failed()
-        elif speaker_name_msg == "银狼":
-            await sing_msg.send('今天也上线啦?')
-        else:
-            await sing_msg.send('欢呼吧！')
+        await sing_msg.send('欢呼吧！')
 
         # 优先从本地歌曲库中查找歌曲
         if source == "local":
@@ -841,8 +810,6 @@ async def handle_menu(bot: Bot, event: GroupMessageEvent, args: Message = Comman
 注2：该命令的实现方式为上传至群文件，若牛牛没有群文件上传权限则无法使用。
 ━━━━━━━━━━━━━━
 当前的可选speaker：{', '.join(plugin_config.sing_speakers.keys())}
-━━━━━━━━━━━━━━
-soyo唱不了春日影不是bug哦，是小彩蛋，要是想让soyo唱的话可以在唱歌命令最后加上"--soyo-force"
         """.strip()
     else:
         # 发送简略版菜单
