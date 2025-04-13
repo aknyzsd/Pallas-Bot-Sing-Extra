@@ -27,8 +27,8 @@
 
 **其他改动：** <br>
 1.新增了本地歌曲库功能，路径在 resource/local_music <br>
-2.唱歌时可以传入 -t 参数用来控制输出时长，该参数的优先级高于 .env 文件中配置的时长<br>
-2.1.传入 -t 参数时为避免直接发送缓存，会将 svc mix splices 这三个文件夹内的对应 speaker 和 song_id 的缓存删掉
+2.唱歌时可以传入 -t 参数用来控制输出时长，该参数的优先级高于 .env 文件中配置的时长 <br>
+2.1.传入 -t 参数时为避免直接发送缓存，会将 svc mix splices 这三个文件夹内的对应 speaker 和 song_id 的缓存删掉 <br>
 3.为 key= 参数增加 -k 别名 <br>
 4.手动清除特定 speaker song_id 的缓存 <br>
 5.牛牛点歌：发送 resource/sing/ncm 中的原曲 <br>
