@@ -8,3 +8,6 @@
 [submodule "src/plugins/sing/DDSP-SVC"]
 	path = src/plugins/sing/DDSP-SVC
 	url = https://github.com/2580m/DDSP-SVC
+[submodule "src/plugins/sing/so_vits_svc_41"]
+	path = src/plugins/sing/so_vits_svc_41
+	url = https://github.com/2580m/so_vits_svc_41
