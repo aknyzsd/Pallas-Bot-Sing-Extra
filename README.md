@@ -8,6 +8,16 @@
 
 # ***So-Vits-SVC 4.1、DDSP-SVC 6.1的支持来自@一只沙貂***
 
+<br>
+
+#**注意事项：**
+
+**1.关于依赖：笨蛋仓库所有者不会处理依赖，请分别进入 so_vits_svc41 和 DDSP-SVC 文件夹，借助文件夹内的 requirements.txt 安装依赖**
+**2.下载预训练模型：由于Github不允许上传超过100MiB的文件，所以 so_vits_svc41 和 DDSP-SVC 运行时所需的预训练模型需要另外下载:**
+  **2.1.对于so_vits_svc_41:前往 https://huggingface.co/BG4JEC/DDSP61_SVC41_Pretrain_Models/tree/main 进入 so_vits_svc_41/pretrain ，下载模型并将模型放入本仓库的对应目录**
+  **2.1.对于so_vits_svc_41:前往 https://huggingface.co/BG4JEC/DDSP61_SVC41_Pretrain_Models/tree/main 进入 DDSP-SVC/ ，下载其中的文件并按照 huggingface 伤的目录结构将模型放入本仓库的对应目录**
+
+
 Todo:支持RVC
 
 <br>
