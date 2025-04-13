@@ -4,8 +4,6 @@
 
 # Pallas-Bot
 
-<br>
-
 # ***So-Vits-SVC 4.1、DDSP-SVC 6.1的支持来自@一只沙貂***
 
 <br>
@@ -18,7 +16,7 @@
 
 <div align="left">
 
-#**注意事项：**
+# **注意事项：**
 
 **1.关于依赖：笨蛋仓库所有者不会处理依赖，请分别进入 so_vits_svc41 和 DDSP-SVC 文件夹，借助文件夹内的 requirements.txt 安装依赖**  <br>
 **2.下载预训练模型：由于 Github 不允许上传超过 100MiB 的文件，所以 so_vits_svc41 和 DDSP-SVC 运行时所需的预训练模型需要另外下载:** <br>
