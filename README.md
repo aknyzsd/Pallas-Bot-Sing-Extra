@@ -25,6 +25,16 @@
   **2.1.对于 so_vits_svc_41 : 前往 https://huggingface.co/BG4JEC/DDSP61_SVC41_Pretrain_Models/tree/main 进入 so_vits_svc_41/pretrain ，下载模型并将模型放入本仓库的对应目录** <br>
   **2.1.对于 DDSP-SVC : 前往 https://huggingface.co/BG4JEC/DDSP61_SVC41_Pretrain_Models/tree/main 进入 DDSP-SVC/ ，下载其中的文件并按照 huggingface 上的目录结构将文件放入本仓库的对应目录**
 
+<br>
+
+**其他改动：**
+1.新增了本地歌曲库功能，路径在 resource/local_music <br>
+2.唱歌时可以传入 -t 参数用来控制输出时长，该参数的优先级高于 .env 文件中配置的时长 <br>
+3.为 key= 参数增加 -k 别名 <br>
+4.手动清除特定<speaker> <song_id>的缓存 <br>
+5.牛牛点歌：发送 resource/sing/ncm 中的原曲 <br>
+6.发送歌曲文件：以群文件的方式上传 resource/sing/splices 中推理好的成曲
+
 
 Todo:支持RVC
 
