@@ -2,3 +2,6 @@
 	path = src/plugins/sing/so_vits_svc
 	url = https://github.com/MistEO/so-vits-svc.git
 	branch = 4.0_pallas
+[submodule "src/plugin/sing/DDSP-SVC"]
+	path = src/plugin/sing/DDSP-SVC
+	url = https://github.com/2580m/DDSP-SVC
