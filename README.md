@@ -21,20 +21,21 @@
 **1.关于依赖：笨蛋仓库所有者不会处理依赖，请分别进入 src/plugins/sing/so_vits_svc_41 和 src/plugins/sing/DDSP-SVC 文件夹，借助文件夹内的 requirements.txt 安装依赖**  <br>
 **2.下载预训练模型：由于 Github 不允许上传超过 100MiB 的文件，所以 so_vits_svc41 和 DDSP-SVC 运行时所需的预训练模型需要另外下载:** <br>
   **2.1.对于 so_vits_svc_41 : 前往 https://huggingface.co/BG4JEC/DDSP61_SVC41_Pretrain_Models/tree/main 进入 so_vits_svc_41/pretrain ，下载模型并将模型放入本仓库的对应目录** <br>
-  **2.1.对于 DDSP-SVC : 前往 https://huggingface.co/BG4JEC/DDSP61_SVC41_Pretrain_Models/tree/main 进入 DDSP-SVC/ ，下载其中的文件并按照 huggingface 上的目录结构将文件放入本仓库的对应目录**
+  **2.2.对于 DDSP-SVC : 前往 https://huggingface.co/BG4JEC/DDSP61_SVC41_Pretrain_Models/tree/main 进入 DDSP-SVC/ ，下载其中的文件并按照 huggingface 上的目录结构将文件放入本仓库的对应目录** <br>
+  **2.3.若您无法访问 HuggingFace 请使用以下镜像： https://www.modelscope.cn/models/BG4JEC/DDSP61_SVC41_Pretrain_Models 使用方法与 2.1 与 2.2 中所述相同**
 
 <br>
 
 **其他改动：** <br>
 1.新增了本地歌曲库功能，路径在 resource/local_music <br>
-2.唱歌时可以传入 -t 参数用来控制输出时长，该参数的优先级高于 .env 文件中配置的时长<br>
-2.1.传入 -t 参数时为避免直接发送缓存，会将 svc mix splices 这三个文件夹内的对应 speaker 和 song_id 的缓存删掉
+2.唱歌时可以传入 -t 参数用来控制输出时长，该参数的优先级高于 .env 文件中配置的时长 <br>
+2.1.传入 -t 参数时为避免直接发送缓存，会将 svc mix splices 这三个文件夹内的对应 speaker 和 song_id 的缓存删掉 <br>
 3.为 key= 参数增加 -k 别名 <br>
 4.手动清除特定 speaker song_id 的缓存 <br>
 5.牛牛点歌：发送 resource/sing/ncm 中的原曲 <br>
 6.发送歌曲文件：以群文件的方式上传 resource/sing/splices 中推理好的成曲 <br>
 7.自动化回收切片和人声分离文件 <br>
-7.1.人声分离文件可以考虑不自动回收，但若这样则需在传入 -t 参数的代码块内新增删除 hdemucs_mmi 中的对应 song_id 的缓存文件
+7.1.人声分离文件可以考虑不自动回收，但若这样则需在传入 -t 参数的代码块内新增删除 hdemucs_mmi 中的对应 song_id 的缓存文件的机制
 
 Todo:支持RVC
 
